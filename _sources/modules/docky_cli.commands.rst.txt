@@ -1,0 +1,20 @@
+docky\_cli.commands package
+===========================
+
+.. automodule:: docky_cli.commands
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+docky\_cli.commands.env\_file module
+------------------------------------
+
+.. automodule:: docky_cli.commands.env_file
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

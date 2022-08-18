@@ -1,0 +1,37 @@
+docky\_cli package
+==================
+
+.. automodule:: docky_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   docky_cli.commands
+
+Submodules
+----------
+
+docky\_cli.\_\_main\_\_ module
+------------------------------
+
+.. automodule:: docky_cli.__main__
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+docky\_cli.config module
+------------------------
+
+.. automodule:: docky_cli.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
