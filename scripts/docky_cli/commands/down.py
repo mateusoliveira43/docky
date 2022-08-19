@@ -3,7 +3,8 @@
 from cly.colors import print_flashy
 from cly.utils import run_command
 
-from ..config import COMMON_COMMAND, check_docker_and_compose
+from ..config import COMMON_COMMAND
+from ..errors import check_docker_and_compose
 from .env_file import create_env_file
 
 

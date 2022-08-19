@@ -1,11 +1,12 @@
-"""Remove Docker dependencies management command."""
+"""Run commands in Docker's Container."""
 
 from typing import List, Optional
 
 from cly.colors import print_flashy
 from cly.utils import run_command
 
-from ..config import COMMON_COMMAND, SERVICE_NAME, check_docker_and_compose
+from ..config import COMMON_COMMAND, SERVICE_NAME
+from ..errors import check_docker_and_compose
 from .env_file import create_env_file
 
 

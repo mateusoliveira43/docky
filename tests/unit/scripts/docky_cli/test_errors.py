@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.docky_cli.config import alert_error, check_docker_and_compose
+from scripts.docky_cli.errors import alert_error, check_docker_and_compose
 
 
 def test_alert_error(capsys: pytest.CaptureFixture[str]) -> None:

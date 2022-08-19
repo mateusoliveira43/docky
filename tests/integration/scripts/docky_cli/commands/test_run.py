@@ -1,14 +1,12 @@
 import shutil
-from pathlib import Path
-from tempfile import TemporaryDirectory
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 
 from scripts.cly.utils import run_command
 from scripts.docky_cli.__main__ import CLI
 from scripts.docky_cli.commands import run
-from tests import DATA_FOLDER, InputOptions, cli_for_tests
+from tests import InputOptions, cli_for_tests, override_dependencies
 
 
 @pytest.mark.parametrize("option", [["-h"], ["--help"]])
@@ -42,36 +40,22 @@ def test_run_help(
     reason="docker-compose is not available",
 )
 def test_run(capfd: pytest.CaptureFixture[str]) -> None:
-    with TemporaryDirectory() as temporary_directory:
-        temporary_path = Path(temporary_directory)
-        (temporary_path / "docker").mkdir(parents=True, exist_ok=True)
-        dockerfile = temporary_path / "docker/Dockerfile"
-        compose_file = temporary_path / "docker/docker-compose.yaml"
-        shutil.copyfile(DATA_FOLDER / "docker/Dockerfile", dockerfile)
-        shutil.copyfile(
-            DATA_FOLDER / "docker/docker-compose.yaml",
-            compose_file,
-        )
-        common_command = [
-            "docker-compose",
-            "--file",
-            compose_file.as_posix(),
-            "--project-directory",
-            temporary_path.as_posix(),
-        ]
-        with patch.object(run, "COMMON_COMMAND", common_command):
-            with patch.object(run, "create_env_file", Mock):
-                with patch.object(run, "SERVICE_NAME", "for-tests"):
-                    exit_code = cli_for_tests(CLI, ["run"])
-                    run_command(
-                        [
-                            *common_command,
-                            "down",
-                            "--volumes",
-                            "--rmi",
-                            "'all'",
-                        ]
-                    )
+    @override_dependencies(run)
+    def execute(common_command: InputOptions) -> int:
+        with patch.object(run, "SERVICE_NAME", "for-tests"):
+            exit_code = cli_for_tests(CLI, ["run"])
+            run_command(
+                [
+                    *common_command,
+                    "down",
+                    "--volumes",
+                    "--rmi",
+                    "'all'",
+                ]
+            )
+        return exit_code
+
+    exit_code = execute()  # pylint: disable=no-value-for-parameter
     output, error = capfd.readouterr()
     assert exit_code == 0
     assert all(
@@ -92,38 +76,22 @@ def test_run(capfd: pytest.CaptureFixture[str]) -> None:
     reason="docker-compose is not available",
 )
 def test_run_with_command(capfd: pytest.CaptureFixture[str]) -> None:
-    with TemporaryDirectory() as temporary_directory:
-        temporary_path = Path(temporary_directory)
-        (temporary_path / "docker").mkdir(parents=True, exist_ok=True)
-        dockerfile = temporary_path / "docker/Dockerfile"
-        compose_file = temporary_path / "docker/docker-compose.yaml"
-        shutil.copyfile(DATA_FOLDER / "docker/Dockerfile", dockerfile)
-        shutil.copyfile(
-            DATA_FOLDER / "docker/docker-compose.yaml",
-            compose_file,
-        )
-        common_command = [
-            "docker-compose",
-            "--file",
-            compose_file.as_posix(),
-            "--project-directory",
-            temporary_path.as_posix(),
-        ]
-        with patch.object(run, "COMMON_COMMAND", common_command):
-            with patch.object(run, "create_env_file", Mock):
-                with patch.object(run, "SERVICE_NAME", "for-tests"):
-                    exit_code = cli_for_tests(
-                        CLI, ["run", "echo", "hello", "there"]
-                    )
-                    run_command(
-                        [
-                            *common_command,
-                            "down",
-                            "--volumes",
-                            "--rmi",
-                            "'all'",
-                        ]
-                    )
+    @override_dependencies(run)
+    def execute(common_command: InputOptions) -> int:
+        with patch.object(run, "SERVICE_NAME", "for-tests"):
+            exit_code = cli_for_tests(CLI, ["run", "echo", "hello", "there"])
+            run_command(
+                [
+                    *common_command,
+                    "down",
+                    "--volumes",
+                    "--rmi",
+                    "'all'",
+                ]
+            )
+        return exit_code
+
+    exit_code = execute()  # pylint: disable=no-value-for-parameter
     output, error = capfd.readouterr()
     assert exit_code == 0
     assert all(

@@ -5,13 +5,8 @@ from typing import Dict
 from cly.colors import color_text, print_flashy
 from cly.utils import get_standard_output
 
-from ..config import (
-    PROJECT_ROOT,
-    SERVICE_NAME,
-    USER_NAME,
-    __file__,
-    alert_error,
-)
+from ..config import PROJECT_ROOT, SERVICE_NAME, USER_NAME, __file__
+from ..errors import alert_error
 
 ENV_FILE = PROJECT_ROOT / ".env"
 
