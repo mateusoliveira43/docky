@@ -7,7 +7,7 @@ from cly.colors import color_text
 
 USER_NAME: str = "develop"
 SERVICE_NAME: str = "docky"
-PROJECT_ROOT: Path = Path(__file__).resolve().parents[2]
+PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent.parent
 COMPOSE_FILE: Path = PROJECT_ROOT / "docker/docker-compose.yaml"
 
 COMMON_COMMAND = [
@@ -15,7 +15,7 @@ COMMON_COMMAND = [
     "--file",
     COMPOSE_FILE.as_posix(),
     "--project-directory",
-    PROJECT_ROOT.as_posix(),  # pylint: disable=no-member
+    PROJECT_ROOT.as_posix(),
 ]
 
 
