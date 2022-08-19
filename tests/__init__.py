@@ -6,6 +6,7 @@ from unittest.mock import patch
 from scripts.cly.config import ConfiguredParser
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_FOLDER = Path(__file__).resolve().parent / "data"
 SCRIPTS_FOLDER = PROJECT_ROOT / "scripts"
 if SCRIPTS_FOLDER.exists():
     sys.path.append(SCRIPTS_FOLDER.as_posix())

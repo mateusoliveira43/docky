@@ -1,7 +1,7 @@
 services:
   docky:
-    image: ${PROJECT_NAME}
-    container_name: ${PROJECT_NAME}
+    image: ${SERVICE_NAME}
+    container_name: ${SERVICE_NAME}
     hostname: docker
     entrypoint: ["poetry", "run"]
     command: ["/bin/bash"]
