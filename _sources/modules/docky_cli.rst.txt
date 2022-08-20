@@ -35,3 +35,12 @@ docky\_cli.config module
    :undoc-members:
    :show-inheritance:
    :private-members:
+
+docky\_cli.errors module
+------------------------
+
+.. automodule:: docky_cli.errors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

@@ -10,10 +10,28 @@ docky\_cli.commands package
 Submodules
 ----------
 
+docky\_cli.commands.down module
+-------------------------------
+
+.. automodule:: docky_cli.commands.down
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
 docky\_cli.commands.env\_file module
 ------------------------------------
 
 .. automodule:: docky_cli.commands.env_file
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+docky\_cli.commands.run module
+------------------------------
+
+.. automodule:: docky_cli.commands.run
    :members:
    :undoc-members:
    :show-inheritance:

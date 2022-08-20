@@ -48,6 +48,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docky_cli.__main__">docky_cli.__main__ module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-docky_cli.config">docky_cli.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docky_cli.errors">docky_cli.errors module</a></li>
 </ul>
 </li>
 </ul>
@@ -88,7 +89,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docky_cli.commands.html">docky_cli.commands package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.down">docky_cli.commands.down module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.env_file">docky_cli.commands.env_file module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.run">docky_cli.commands.run module</a></li>
 </ul>
 </li>
 </ul>
@@ -104,9 +107,13 @@
 <section id="module-docky_cli.config">
 <span id="docky-cli-config-module"></span><h2>docky_cli.config module<a class="headerlink" href="#module-docky_cli.config" title="Permalink to this heading"></a></h2>
 <p>Config file for Docky.</p>
+</section>
+<section id="module-docky_cli.errors">
+<span id="docky-cli-errors-module"></span><h2>docky_cli.errors module<a class="headerlink" href="#module-docky_cli.errors" title="Permalink to this heading"></a></h2>
+<p>Error related functionalities.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="docky_cli.config.alert_error">
-<span class="sig-prename descclassname"><span class="pre">docky_cli.config.</span></span><span class="sig-name descname"><span class="pre">alert_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.config.alert_error" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="docky_cli.errors.alert_error">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.errors.</span></span><span class="sig-name descname"><span class="pre">alert_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.errors.alert_error" title="Permalink to this definition"></a></dt>
 <dd><p>Alert error to user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -116,6 +123,16 @@
 <dd class="field-even"><p><strong>SystemExit</strong> – Exit with error code 1.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.errors.check_docker_and_compose">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.errors.</span></span><span class="sig-name descname"><span class="pre">check_docker_and_compose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.errors.check_docker_and_compose" title="Permalink to this definition"></a></dt>
+<dd><p>Check if Docker and Docker Compose are installed and in the path.</p>
+<p>Check if Docker (‘docker’ executable) is installed and in the path. If not,
+exits with error and message.
+Check if Docker Compose (‘docker-compose’ executable) is installed and in
+the path. If not, exits with error and message.</p>
 </dd></dl>
 
 </section>
