@@ -20,13 +20,14 @@ def test_run_help(
     assert all(
         word in output
         for word in [
-            "Enter",
-            "project's",
+            "Execute",
+            "service",
             "Container",
-            "shell",
+            "default",
+            "command",
             "or",
             "run",
-            "command",
+            "custom",
         ]
     )
 

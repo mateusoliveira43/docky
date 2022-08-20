@@ -9,7 +9,10 @@ from .commands.run import run
 
 CLI_CONFIG = {
     "name": "Docky",
-    "description": "Docky: Run Docker commands with Python.",
+    "description": (
+        "Docky: Run Docker commands with Python. "
+        f"Script configuration in {config.__file__}."
+    ),
     "epilog": "Docker\N{whale} + Python\N{snake}",
     "version": __version__,
 }

@@ -26,9 +26,9 @@ def test_down_help(
             "Images",
             "and",
             "Volumes",
-            "of",
-            "the",
-            "project",
+            "in",
+            "compose",
+            "file",
         ]
     )
 

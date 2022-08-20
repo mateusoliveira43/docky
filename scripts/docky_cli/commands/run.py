@@ -12,17 +12,17 @@ from .env_file import create_env_file
 
 def run_command_in_container(command: List[Optional[str]]) -> None:
     """
-    Enter project's Container shell or run a command in it.
+    Execute service's Container default command or run a custom command in it.
 
     If images are not yet built, they are build before running the command.
 
-    If no command is passed, enters the Container's shell (command in compose
-    file), otherwise, runs the commands in the Container's shell and exits.
+    If no command is passed, runs the Container's default command. Otherwise,
+    runs the passed commands in the Container and exits.
 
     Parameters
     ----------
     command : List[Optional[str]]
-        Command to run instead of entering the Container's shell.
+        Command to run instead of Container's default command.
 
     """
     print_flashy("Running command in Container")
@@ -39,12 +39,12 @@ def run_command_in_container(command: List[Optional[str]]) -> None:
 
 def run(command: List[Optional[str]]) -> None:
     """
-    Enter project's Container shell or run a command in it.
+    Execute service's Container default command or run a custom command in it.
 
     Parameters
     ----------
     command : List[Optional[str]]
-        Command to run instead of entering the Container's shell.
+        Command to run instead of Container's default command.
 
     """
     create_env_file()

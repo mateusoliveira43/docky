@@ -12,12 +12,28 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_FOLDER = Path(__file__).resolve().parent / "data"
 SCRIPTS_FOLDER = PROJECT_ROOT / "scripts"
 if SCRIPTS_FOLDER.exists():
+    # Since scripts is not a Python package, this is needed
     sys.path.append(SCRIPTS_FOLDER.as_posix())
 
 InputOptions = List[Optional[str]]
 
 
 def cli_for_tests(cli: ConfiguredParser, sys_mock: InputOptions) -> int:
+    """
+    Test CLI with passed arguments. Returns the exit code of the operation.
+
+    Parameters
+    ----------
+    cli : ConfiguredParser
+        CLI to test.
+    sys_mock : InputOptions
+        Arguments to pass to CLI.
+
+    Returns
+    -------
+    int
+        Exit code.
+    """
     with patch.object(sys, "argv", ["file_name", *sys_mock]):
         try:
             cli()
@@ -27,6 +43,25 @@ def cli_for_tests(cli: ConfiguredParser, sys_mock: InputOptions) -> int:
 
 
 def override_dependencies(module: ModuleType) -> Callable[..., Any]:
+    """
+    Override dependencies for tests.
+
+    Overrides:
+    - COMMON_COMMAND to use Dockerfile and compose file in tests/data in a
+    temporary directory.
+    - create_env_file to not create .env file.
+
+    Parameters
+    ----------
+    module : ModuleType
+        Module where are the variables and functions to be overridden.
+
+    Returns
+    -------
+    Callable[..., Any]
+        Overridden function.
+    """
+
     def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         def wrap(*args: Any, **kwargs: Any) -> Any:
             with TemporaryDirectory() as temporary_directory:
