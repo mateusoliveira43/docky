@@ -1,0 +1,8 @@
+services:
+  for-tests:
+    image: for-tests
+    container_name: for-tests
+    hostname: docker
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile

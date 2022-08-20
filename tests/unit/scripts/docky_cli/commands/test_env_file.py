@@ -6,7 +6,7 @@ import pytest
 
 from scripts.docky_cli.commands import env_file
 from scripts.docky_cli.commands.env_file import create_env_file, read_env_file
-from tests import data
+from tests import DATA_FOLDER
 
 
 def test_create_env_file(capsys: pytest.CaptureFixture[str]) -> None:
@@ -24,9 +24,7 @@ def test_create_env_file(capsys: pytest.CaptureFixture[str]) -> None:
 def test_create_env_file_file_already_exists(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    with patch.object(
-        env_file, "ENV_FILE", Path(data.__file__).parent / "test_env.env"
-    ):
+    with patch.object(env_file, "ENV_FILE", DATA_FOLDER / "test_env.env"):
         create_env_file()
     output, error = capsys.readouterr()
     assert not error
@@ -66,9 +64,7 @@ def test_create_env_file_service_name_uppercase_error(
 
 
 def test_read_env_file() -> None:
-    with patch.object(
-        env_file, "ENV_FILE", Path(data.__file__).parent / "test_env.env"
-    ):
+    with patch.object(env_file, "ENV_FILE", DATA_FOLDER / "test_env.env"):
         variables = read_env_file()
     assert variables["Obi-Wan"] == "Kenobi"
     assert variables["Anakin"] == "Skywalker"

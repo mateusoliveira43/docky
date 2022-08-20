@@ -6,7 +6,7 @@ import pytest
 
 from scripts.docky_cli.__main__ import CLI
 from scripts.docky_cli.commands import env_file
-from tests import InputOptions, cli_for_tests, data
+from tests import DATA_FOLDER, InputOptions, cli_for_tests
 
 
 @pytest.mark.parametrize("option", [["-h"], ["--help"]])
@@ -52,9 +52,7 @@ def test_env_create_env_file(capsys: pytest.CaptureFixture[str]) -> None:
 def test_env_env_file_already_exists(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    with patch.object(
-        env_file, "ENV_FILE", Path(data.__file__).parent / "test_env.env"
-    ):
+    with patch.object(env_file, "ENV_FILE", DATA_FOLDER / "test_env.env"):
         exit_code = cli_for_tests(CLI, ["env"])
     output, error = capsys.readouterr()
     assert exit_code == 0

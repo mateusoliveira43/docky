@@ -19,7 +19,13 @@ To run the project, it is necessary the following tools:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-## TODO Usage
+## Usage
+
+To get script help, run
+```
+./scripts/docky.py
+./scripts/docky.py <command> --help
+```
 
 To connect to container's shell, run
 ```
@@ -27,19 +33,19 @@ To connect to container's shell, run
 ```
 To exit the container's shell, run `CTRL+D` or `exit`.
 
-To run Dockerfile linter, run
+TODO To run Dockerfile linter, run
 ```
 ./scripts/docky.py lint
 ```
 
-To remove the project's containers, images, volumes and networks, run
+To remove the project's containers, networks, images and volumes, run
 ```
 ./scripts/docky.py down
 ```
 
-To change Docker configuration, change the variables in `.env` file.
+To change containers, images and volumes configuration, change the variables in `.env` file.
 
-Run the commands presented in the following sections in the container's shell.
+Run the commands presented in the following sections in the container.
 
 ## Quality
 
