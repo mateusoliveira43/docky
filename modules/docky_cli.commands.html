@@ -140,13 +140,39 @@ values.</p>
 </dd></dl>
 
 </section>
+<section id="module-docky_cli.commands.lint">
+<span id="docky-cli-commands-lint-module"></span><h2>docky_cli.commands.lint module<a class="headerlink" href="#module-docky_cli.commands.lint" title="Permalink to this heading"></a></h2>
+<p>Lint Dockerfile using hadolint <a class="reference external" href="https://github.com/hadolint/hadolint">https://github.com/hadolint/hadolint</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.commands.lint.lint">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.commands.lint.</span></span><span class="sig-name descname"><span class="pre">lint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.commands.lint.lint" title="Permalink to this definition"></a></dt>
+<dd><p>Lint Dockerfile.</p>
+</dd></dl>
+
+</section>
+<section id="module-docky_cli.commands.list_docker_objects">
+<span id="docky-cli-commands-list-docker-objects-module"></span><h2>docky_cli.commands.list_docker_objects module<a class="headerlink" href="#module-docky_cli.commands.list_docker_objects" title="Permalink to this heading"></a></h2>
+<p>List all Docker objects management command.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.commands.list_docker_objects.list_docker_objects">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.commands.list_docker_objects.</span></span><span class="sig-name descname"><span class="pre">list_docker_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show_all</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.commands.list_docker_objects.list_docker_objects" title="Permalink to this definition"></a></dt>
+<dd><p>List all Containers, Networks, Images and Volumes in compose file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show_all</strong> (<em>bool</em>) – List all Containers, Networks, Images and Volumes in host machine
+, by default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-docky_cli.commands.run">
 <span id="docky-cli-commands-run-module"></span><h2>docky_cli.commands.run module<a class="headerlink" href="#module-docky_cli.commands.run" title="Permalink to this heading"></a></h2>
 <p>Run commands in Docker’s Container.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docky_cli.commands.run.run">
 <span class="sig-prename descclassname"><span class="pre">docky_cli.commands.run.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.commands.run.run" title="Permalink to this definition"></a></dt>
-<dd><p>Execute service’s Container default command or run a custom command in it.</p>
+<dd><p>Run service’s Container default command or run a custom command in it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>command</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><em>str</em><em>]</em><em>]</em>) – Command to run instead of Container’s default command.</p>
@@ -157,7 +183,7 @@ values.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="docky_cli.commands.run.run_command_in_container">
 <span class="sig-prename descclassname"><span class="pre">docky_cli.commands.run.</span></span><span class="sig-name descname"><span class="pre">run_command_in_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.commands.run.run_command_in_container" title="Permalink to this definition"></a></dt>
-<dd><p>Execute service’s Container default command or run a custom command in it.</p>
+<dd><p>Run service’s Container default command or run a custom command in it.</p>
 <p>If images are not yet built, they are build before running the command.</p>
 <p>If no command is passed, runs the Container’s default command. Otherwise,
 runs the passed commands in the Container and exits.</p>
@@ -166,6 +192,23 @@ runs the passed commands in the Container and exits.</p>
 <dd class="field-odd"><p><strong>command</strong> (<em>List</em><em>[</em><em>Optional</em><em>[</em><em>str</em><em>]</em><em>]</em>) – Command to run instead of Container’s default command.</p>
 </dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="module-docky_cli.commands.scan">
+<span id="docky-cli-commands-scan-module"></span><h2>docky_cli.commands.scan module<a class="headerlink" href="#module-docky_cli.commands.scan" title="Permalink to this heading"></a></h2>
+<p>Security vulnerability scan for Image using SNYK <a class="reference external" href="https://snyk.io/">https://snyk.io/</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.commands.scan.scan">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.commands.scan.</span></span><span class="sig-name descname"><span class="pre">scan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.commands.scan.scan" title="Permalink to this definition"></a></dt>
+<dd><p>Scan service’s Image for security vulnerabilities.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.commands.scan.scan_image">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.commands.scan.</span></span><span class="sig-name descname"><span class="pre">scan_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.commands.scan.scan_image" title="Permalink to this definition"></a></dt>
+<dd><p>Scan service’s Image for security vulnerabilities.</p>
+<p>You need to have an account in <a class="reference external" href="https://snyk.io/">https://snyk.io/</a> to execute the scan.</p>
 </dd></dl>
 
 </section>

@@ -28,10 +28,37 @@ docky\_cli.commands.env\_file module
    :show-inheritance:
    :private-members:
 
+docky\_cli.commands.lint module
+-------------------------------
+
+.. automodule:: docky_cli.commands.lint
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+docky\_cli.commands.list\_docker\_objects module
+------------------------------------------------
+
+.. automodule:: docky_cli.commands.list_docker_objects
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
 docky\_cli.commands.run module
 ------------------------------
 
 .. automodule:: docky_cli.commands.run
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+docky\_cli.commands.scan module
+-------------------------------
+
+.. automodule:: docky_cli.commands.scan
    :members:
    :undoc-members:
    :show-inheritance:

@@ -91,7 +91,10 @@
 <li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.down">docky_cli.commands.down module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.env_file">docky_cli.commands.env_file module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.lint">docky_cli.commands.lint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.list_docker_objects">docky_cli.commands.list_docker_objects module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.run">docky_cli.commands.run module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docky_cli.commands.html#module-docky_cli.commands.scan">docky_cli.commands.scan module</a></li>
 </ul>
 </li>
 </ul>
@@ -123,6 +126,22 @@
 <dd class="field-even"><p><strong>SystemExit</strong> – Exit with error code 1.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.errors.check_compose">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.errors.</span></span><span class="sig-name descname"><span class="pre">check_compose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.errors.check_compose" title="Permalink to this definition"></a></dt>
+<dd><p>Check if Docker Compose is installed and in the path.</p>
+<p>Check if Docker Compose (‘docker-compose’ executable) is installed and in
+the path. If not, exits with error and message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docky_cli.errors.check_docker">
+<span class="sig-prename descclassname"><span class="pre">docky_cli.errors.</span></span><span class="sig-name descname"><span class="pre">check_docker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#docky_cli.errors.check_docker" title="Permalink to this definition"></a></dt>
+<dd><p>Check if Docker is installed and in the path.</p>
+<p>Check if Docker (‘docker’ executable) is installed and in the path. If not,
+exits with error and message.</p>
 </dd></dl>
 
 <dl class="py function">
