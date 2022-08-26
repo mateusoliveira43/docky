@@ -82,6 +82,7 @@ jobs:
           dockerfile: docker/Dockerfile
 
       - name: Docker image security vulnerability scan
+        continue-on-error: true
         uses: snyk/actions/docker@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
