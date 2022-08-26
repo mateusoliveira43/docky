@@ -4,6 +4,7 @@ from unittest.mock import Mock, patch
 import pytest
 
 from scripts.docky_cli.__main__ import CLI
+from scripts.docky_cli.commands import list_docker_objects
 from tests import InputOptions, cli_for_tests
 
 
@@ -36,7 +37,8 @@ def test_list_help(
 def test_list(
     mock_subprocess: Mock, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    exit_code = cli_for_tests(CLI, ["ls"])
+    with patch.object(list_docker_objects, "create_env_file", Mock):
+        exit_code = cli_for_tests(CLI, ["ls"])
     output, error = capsys.readouterr()
     assert exit_code == 0
     assert not error
@@ -58,7 +60,8 @@ def test_list_all(
     option: InputOptions,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    exit_code = cli_for_tests(CLI, ["ls", *option])
+    with patch.object(list_docker_objects, "create_env_file", Mock):
+        exit_code = cli_for_tests(CLI, ["ls", *option])
     output, error = capsys.readouterr()
     assert exit_code == 0
     assert not error
