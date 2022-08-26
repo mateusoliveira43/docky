@@ -7,9 +7,7 @@
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-Docky: Run Docker commands with Python.
-
-Check the project's documentation [here](https://mateusoliveira43.github.io/docky/).
+**Docky**: Run Docker commands with Python. Check the project's documentation [here](https://mateusoliveira43.github.io/docky/).
 
 ## Requirements
 
@@ -19,7 +17,7 @@ To run the project, it is necessary the following tools:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Usage
+## Development
 
 To get script help, run
 ```

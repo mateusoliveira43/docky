@@ -1,7 +1,7 @@
 Welcome to Docky's documentation!
 =================================
 
-**Docky** is a Command Line Interface (CLI) written in Python (using `CLY?!
+**Docky** is a Command Line Interface (CLI) tool written in Python (using `CLY?!
 <https://github.com/mateusoliveira43/cly>`_) for running Docker and Docker
 Compose commands.
 
