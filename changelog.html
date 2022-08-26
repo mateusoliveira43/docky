@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; Docky  documentation</title>
+  <title>Changelog &mdash; Docky  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,10 +17,10 @@
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="docky_cli" href="modules/modules.html" />
+    <link rel="prev" title="Welcome to Docky’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,15 +31,18 @@
             <a href="index.html" class="icon icon-home"> Docky
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.0.0</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules/modules.html">docky_cli</a></li>
 </ul>
 
@@ -57,8 +60,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Search</li>
+      <li>Changelog</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/changelog.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -66,22 +70,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>1.0.0<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p><strong>First version of Docky!</strong></p>
+<p>In this version:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.env</span></code> file management command.</p></li>
+<li><p>Run a command in pre defined service (of compose file) command.</p></li>
+<li><p>List all Docker objects (Containers, Networks, Images and Volumes) command.</p></li>
+<li><p>Lint pre defined Dockerfile command.</p></li>
+<li><p>Security vulnerability scan for pre defined service Image command.</p></li>
+<li><p>Remove all Docker objects (of compose file) command.</p></li>
+</ul>
+<p>For next versions, I want to:</p>
+<ul class="simple">
+<li><p>Add up command for the CLI.</p></li>
+<li><p>Add a configuration file outside the code (currently it is in <code class="docutils literal notranslate"><span class="pre">docky_cli/config.py</span></code>).</p></li>
+<li><p>Improve command’s help messages.</p></li>
+<li><p>Add init command to CLI (to create folders and files for Docker).</p></li>
+<li><p>Read Docker’s folder and files, so the CLI creates the Dockerfiles, compose
+files and services options to user.</p></li>
+</ul>
+</section>
+</section>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Docky’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules/modules.html" class="btn btn-neutral float-right" title="docky_cli" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -103,14 +124,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>
