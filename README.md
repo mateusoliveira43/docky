@@ -33,9 +33,14 @@ To connect to container's shell, run
 ```
 To exit the container's shell, run `CTRL+D` or `exit`.
 
-TODO To run Dockerfile linter, run
+To run Dockerfile linter, run
 ```
 ./scripts/docky.py lint
+```
+
+To scan Docker Image, run
+```
+./scripts/docky.py scan
 ```
 
 To remove the project's containers, networks, images and volumes, run

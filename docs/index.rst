@@ -1,7 +1,8 @@
 Welcome to Docky's documentation!
 =================================
 
-TODO
+.. image:: cli_help.gif
+   :alt: Running CLI help
 
 .. toctree::
    :maxdepth: 2
