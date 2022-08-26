@@ -71,10 +71,24 @@ jobs:
   docker-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: hadolint/hadolint-action@v2.0.0
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build --tag docky --file docker/Dockerfile .
+
+      - name: Dockerfile linter
+        uses: hadolint/hadolint-action@v2.0.0
         with:
           dockerfile: docker/Dockerfile
+
+      - name: Docker image security vulnerability scan
+        continue-on-error: true
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: docky
+          args: --severity-threshold=medium --file=docker/Dockerfile
 
   project-check:
     runs-on: ubuntu-latest

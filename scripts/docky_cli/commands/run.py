@@ -12,7 +12,7 @@ from .env_file import create_env_file
 
 def run_command_in_container(command: List[Optional[str]]) -> None:
     """
-    Execute service's Container default command or run a custom command in it.
+    Run service's Container default command or run a custom command in it.
 
     If images are not yet built, they are build before running the command.
 
@@ -39,7 +39,7 @@ def run_command_in_container(command: List[Optional[str]]) -> None:
 
 def run(command: List[Optional[str]]) -> None:
     """
-    Execute service's Container default command or run a custom command in it.
+    Run service's Container default command or run a custom command in it.
 
     Parameters
     ----------

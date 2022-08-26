@@ -6,6 +6,7 @@ USER_NAME: str = "develop"
 SERVICE_NAME: str = "docky"
 PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent.parent
 COMPOSE_FILE: Path = PROJECT_ROOT / "docker/docker-compose.yaml"
+DOCKER_FILE: Path = PROJECT_ROOT / "docker/Dockerfile"
 
 COMMON_COMMAND = [
     "docker-compose",

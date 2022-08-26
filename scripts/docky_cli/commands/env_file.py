@@ -28,6 +28,7 @@ def create_env_file() -> None:
             env_file.write(f"USER_NAME={USER_NAME}\n")
             env_file.write(f"SERVICE_NAME={SERVICE_NAME}\n")
             env_file.write(f"WORK_DIR=/home/{USER_NAME}/{SERVICE_NAME}\n")
+            env_file.write("SNYK_TOKEN=\n")
         print_flashy(f".env file created in {PROJECT_ROOT}")
 
 
@@ -65,4 +66,7 @@ def env(show: bool = False) -> None:
         variables = read_env_file()
         spacing = len(color_text(max(variables.keys(), key=len), "green"))
         for key, value in variables.items():
-            print(f"{color_text(key,'green').ljust(spacing)} = {value}")
+            key_name = color_text(key, "green" if value else "red").ljust(
+                spacing
+            )
+            print(f"{key_name} = {value}")
