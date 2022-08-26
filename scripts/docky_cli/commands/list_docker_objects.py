@@ -1,4 +1,4 @@
-"""List all Container related management command."""
+"""List all Docker objects management command."""
 
 from cly.colors import print_flashy
 from cly.utils import run_command
@@ -8,7 +8,7 @@ from ..errors import check_docker
 from .env_file import create_env_file
 
 
-def list_container_related(show_all: bool = False) -> None:
+def list_docker_objects(show_all: bool = False) -> None:
     """
     List all Containers, Networks, Images and Volumes in compose file.
 
