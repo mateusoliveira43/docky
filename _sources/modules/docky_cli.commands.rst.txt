@@ -63,3 +63,12 @@ docky\_cli.commands.scan module
    :undoc-members:
    :show-inheritance:
    :private-members:
+
+docky\_cli.commands.up module
+-----------------------------
+
+.. automodule:: docky_cli.commands.up
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
