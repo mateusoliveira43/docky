@@ -3,7 +3,7 @@ services:
     image: ${SERVICE_NAME}
     container_name: ${SERVICE_NAME}
     hostname: docker
-    entrypoint: ["poetry", "run"]
+    entrypoint: ["./docker/entrypoint.sh"]
     command: ["/bin/bash"]
     build:
       context: ./

@@ -5,8 +5,9 @@ from typing import List, Optional
 from cly.colors import print_flashy
 from cly.utils import run_command
 
-from ..config import COMMON_COMMAND, SERVICE_NAME
+from ..config import SERVICE_NAME
 from ..errors import check_docker_and_compose
+from . import COMMON_COMMAND
 from .env_file import create_env_file
 
 
