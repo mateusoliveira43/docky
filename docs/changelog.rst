@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.0.1
+-----
+
+In this version:
+
+- **up command**: Start all services (of compose file) command.
+- Script to install/update **Docky** in your project.
+
 1.0.0
 -----
 

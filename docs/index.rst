@@ -8,8 +8,16 @@ Compose commands.
 Usage
 -----
 
-To use **Docky** in your project, just copy the ``scripts`` folder to your project
-and add the project's configuration in ``scripts/docky_cli/config.py``.
+To use **Docky** in your project, in your project's root, run::
+
+   curl -fsSL https://raw.githubusercontent.com/mateusoliveira43/docky/main/instal_docky.py | python -
+
+This will copy **Docky** (latest version) files to the ``scripts`` folder of your project.
+Then add the project's configuration in ``scripts/docky_cli/config.py`` file.
+
+To install (or update) Docky to a specific version, run::
+
+   curl -fsSL https://raw.githubusercontent.com/mateusoliveira43/docky/main/instal_docky.py | python - <version>
 
 You can check **Docky** help by running::
 
@@ -52,6 +60,18 @@ where ``<command>`` can be a command and it's arguments.
 
 .. image:: run_outside.gif
    :alt: Running command outside Container's shell
+
+You can add **Docky** to the path, and call it with ``docky`` instead of
+``./scripts/docky.py`` by adding **Docky** to ``pyproject.toml``::
+
+   [tool.poetry.scripts]
+   docky = "scripts.docky_cli.__main__:CLI"
+
+
+and running::
+
+   pip install -e ./
+
 
 .. toctree::
    :maxdepth: 2
