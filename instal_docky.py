@@ -33,5 +33,9 @@ def get_docky() -> str:
 
 
 subprocess.run(get_docky(), shell=True, check=True, encoding="utf-8")  # nosec
-shutil.copytree(PROJECT_ROOT / "docky/scripts", PROJECT_ROOT / "scripts")
+shutil.copytree(  # type: ignore
+    src=PROJECT_ROOT / "docky/scripts",
+    dst=PROJECT_ROOT / "scripts",
+    dirs_exist_ok=True,
+)
 shutil.rmtree(PROJECT_ROOT / "docky")
