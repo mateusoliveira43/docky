@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Docky"
+name = "scripts"
 version = "1.0.0"
 description = "Docky: Run Docker commands with Python."
 authors = ["Mateus Oliveira"]
@@ -24,6 +24,9 @@ Sphinx = "^5.0.2"
 sphinx-rtd-theme = "^1.0.0"
 toml = "^0.10.2"
 types-toml = "^0.10.7"
+
+[tool.poetry.scripts]
+docky = "scripts.docky_cli.__main__:CLI"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

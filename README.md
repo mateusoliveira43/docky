@@ -19,7 +19,12 @@ To run the project, it is necessary the following tools:
 
 ## Development
 
-To get script help, run
+To add the CLI to the path, and call it with `docky` instead of `./scripts/docky.py`, run
+```
+pip install -e ./
+```
+
+To get CLI help, run
 ```
 ./scripts/docky.py
 ./scripts/docky.py <command> --help
