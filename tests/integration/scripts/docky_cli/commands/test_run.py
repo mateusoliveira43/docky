@@ -1,20 +1,19 @@
 import shutil
+from typing import Tuple
 from unittest.mock import patch
 
 import pytest
 
-from scripts.cly.utils import run_command
+from scripts.cly.testing import run_cli
+from scripts.cly.utils import get_returncode
 from scripts.docky_cli.__main__ import CLI
 from scripts.docky_cli.commands import run
-from tests import InputOptions, cli_for_tests, override_dependencies
+from tests import InputOptions, override_dependencies
 
 
 @pytest.mark.parametrize("option", [["-h"], ["--help"]])
-def test_run_help(
-    option: InputOptions, capsys: pytest.CaptureFixture[str]
-) -> None:
-    exit_code = cli_for_tests(CLI, ["run", *option])
-    output, error = capsys.readouterr()
+def test_run_help(option: InputOptions) -> None:
+    exit_code, output, error = run_cli(CLI, ["run", *option])
     assert exit_code == 0
     assert not error
     assert all(
@@ -39,12 +38,12 @@ def test_run_help(
     shutil.which("docker-compose") is None,
     reason="docker-compose is not available",
 )
-def test_run(capfd: pytest.CaptureFixture[str]) -> None:
+def test_run() -> None:
     @override_dependencies(run)
-    def execute(common_command: InputOptions) -> int:
+    def execute(common_command: InputOptions) -> Tuple[int, str, str]:
         with patch.object(run, "SERVICE_NAME", "for-tests"):
-            exit_code = cli_for_tests(CLI, ["run"])
-            run_command(
+            exit_code, output, error = run_cli(CLI, ["run"])
+            assert not get_returncode(
                 [
                     *common_command,
                     "down",
@@ -53,10 +52,13 @@ def test_run(capfd: pytest.CaptureFixture[str]) -> None:
                     "'all'",
                 ]
             )
-        return exit_code
+        return exit_code, output, error
 
-    exit_code = execute()  # pylint: disable=no-value-for-parameter
-    output, error = capfd.readouterr()
+    (
+        exit_code,
+        output,
+        error,
+    ) = execute()  # pylint: disable=no-value-for-parameter
     assert exit_code == 0
     assert all(
         word in error for word in ["Creating", "network", "Building", "Image"]
@@ -75,12 +77,14 @@ def test_run(capfd: pytest.CaptureFixture[str]) -> None:
     shutil.which("docker-compose") is None,
     reason="docker-compose is not available",
 )
-def test_run_with_command(capfd: pytest.CaptureFixture[str]) -> None:
+def test_run_with_command() -> None:
     @override_dependencies(run)
-    def execute(common_command: InputOptions) -> int:
+    def execute(common_command: InputOptions) -> Tuple[int, str, str]:
         with patch.object(run, "SERVICE_NAME", "for-tests"):
-            exit_code = cli_for_tests(CLI, ["run", "echo", "hello", "there"])
-            run_command(
+            exit_code, output, error = run_cli(
+                CLI, ["run", "echo", "hello", "there"]
+            )
+            assert not get_returncode(
                 [
                     *common_command,
                     "down",
@@ -89,10 +93,13 @@ def test_run_with_command(capfd: pytest.CaptureFixture[str]) -> None:
                     "'all'",
                 ]
             )
-        return exit_code
+        return exit_code, output, error
 
-    exit_code = execute()  # pylint: disable=no-value-for-parameter
-    output, error = capfd.readouterr()
+    (
+        exit_code,
+        output,
+        error,
+    ) = execute()  # pylint: disable=no-value-for-parameter
     assert exit_code == 0
     assert all(
         word in error for word in ["Creating", "network", "Building", "Image"]

@@ -1,19 +1,18 @@
 import shutil
+from typing import Tuple
 
 import pytest
 
-from scripts.cly.utils import run_command
+from scripts.cly.testing import run_cli
+from scripts.cly.utils import get_returncode
 from scripts.docky_cli.__main__ import CLI
 from scripts.docky_cli.commands import up
-from tests import InputOptions, cli_for_tests, override_dependencies
+from tests import InputOptions, override_dependencies
 
 
 @pytest.mark.parametrize("option", [["-h"], ["--help"]])
-def test_up_help(
-    option: InputOptions, capsys: pytest.CaptureFixture[str]
-) -> None:
-    exit_code = cli_for_tests(CLI, ["up", *option])
-    output, error = capsys.readouterr()
+def test_up_help(option: InputOptions) -> None:
+    exit_code, output, error = run_cli(CLI, ["up", *option])
     assert exit_code == 0
     assert not error
     assert all(
@@ -37,11 +36,11 @@ def test_up_help(
     shutil.which("docker-compose") is None,
     reason="docker-compose is not available",
 )
-def test_up(capfd: pytest.CaptureFixture[str]) -> None:
+def test_up() -> None:
     @override_dependencies(up)
-    def execute(common_command: InputOptions) -> int:
-        exit_code = cli_for_tests(CLI, ["up"])
-        run_command(
+    def execute(common_command: InputOptions) -> Tuple[int, str, str]:
+        exit_code, output, error = run_cli(CLI, ["up"])
+        assert not get_returncode(
             [
                 *common_command,
                 "down",
@@ -50,9 +49,12 @@ def test_up(capfd: pytest.CaptureFixture[str]) -> None:
                 "'all'",
             ]
         )
-        return exit_code
+        return exit_code, output, error
 
-    exit_code = execute()  # pylint: disable=no-value-for-parameter
-    output, _ = capfd.readouterr()
+    (
+        exit_code,
+        output,
+        _,
+    ) = execute()  # pylint: disable=no-value-for-parameter
     assert exit_code == 0
     assert all(word in output for word in ["Starting", "application"])

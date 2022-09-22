@@ -3,16 +3,14 @@ from unittest.mock import Mock, patch
 
 import pytest
 
+from scripts.cly.testing import run_cli
 from scripts.docky_cli.__main__ import CLI
-from tests import InputOptions, cli_for_tests
+from tests import InputOptions
 
 
 @pytest.mark.parametrize("option", [["-h"], ["--help"]])
-def test_lint_help(
-    option: InputOptions, capsys: pytest.CaptureFixture[str]
-) -> None:
-    exit_code = cli_for_tests(CLI, ["lint", *option])
-    output, error = capsys.readouterr()
+def test_lint_help(option: InputOptions) -> None:
+    exit_code, output, error = run_cli(CLI, ["lint", *option])
     assert exit_code == 0
     assert not error
     assert all(
@@ -29,11 +27,8 @@ def test_lint_help(
     reason="docker is not available",
 )
 @patch("subprocess.run")
-def test_lint(
-    mock_subprocess: Mock, capsys: pytest.CaptureFixture[str]
-) -> None:
-    exit_code = cli_for_tests(CLI, ["lint"])
-    output, error = capsys.readouterr()
+def test_lint(mock_subprocess: Mock) -> None:
+    exit_code, output, error = run_cli(CLI, ["lint"])
     assert exit_code == 0
     assert not error
     assert "Linting" in output

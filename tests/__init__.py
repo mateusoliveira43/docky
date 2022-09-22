@@ -3,10 +3,8 @@ import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from types import ModuleType
-from typing import Any, Callable, List, Optional
+from typing import Any, Callable, List, Optional, TypeVar
 from unittest.mock import Mock, patch
-
-from scripts.cly.config import ConfiguredParser
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_FOLDER = Path(__file__).resolve().parent / "data"
@@ -16,33 +14,12 @@ if SCRIPTS_FOLDER.exists():
     sys.path.append(SCRIPTS_FOLDER.as_posix())
 
 InputOptions = List[Optional[str]]
+ReturnT = TypeVar("ReturnT")
 
 
-def cli_for_tests(cli: ConfiguredParser, sys_mock: InputOptions) -> int:
-    """
-    Test CLI with passed arguments. Returns the exit code of the operation.
-
-    Parameters
-    ----------
-    cli : ConfiguredParser
-        CLI to test.
-    sys_mock : InputOptions
-        Arguments to pass to CLI.
-
-    Returns
-    -------
-    int
-        Exit code.
-    """
-    with patch.object(sys, "argv", ["file_name", *sys_mock]):
-        try:
-            cli()
-            return 0
-        except SystemExit as sys_exit:
-            return sys_exit.code
-
-
-def override_dependencies(module: ModuleType) -> Callable[..., Any]:
+def override_dependencies(
+    module: ModuleType,
+) -> Callable[[Callable[..., ReturnT]], Callable[..., ReturnT]]:
     """
     Override dependencies for tests.
 
@@ -58,12 +35,12 @@ def override_dependencies(module: ModuleType) -> Callable[..., Any]:
 
     Returns
     -------
-    Callable[..., Any]
+    Callable[[Callable[..., ReturnT]], Callable[..., ReturnT]]
         Overridden function.
     """
 
-    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
-        def wrap(*args: Any, **kwargs: Any) -> Any:
+    def decorator(func: Callable[..., ReturnT]) -> Callable[..., ReturnT]:
+        def wrap(*args: Any, **kwargs: Any) -> ReturnT:
             with TemporaryDirectory() as temporary_directory:
                 temporary_path = Path(temporary_directory)
                 (temporary_path / "docker").mkdir(parents=True, exist_ok=True)
