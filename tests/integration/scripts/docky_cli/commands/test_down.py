@@ -1,19 +1,18 @@
 import shutil
+from typing import Tuple
 
 import pytest
 
-from scripts.cly.utils import run_command
+from scripts.cly.testing import run_cli
+from scripts.cly.utils import get_returncode
 from scripts.docky_cli.__main__ import CLI
 from scripts.docky_cli.commands import down
-from tests import InputOptions, cli_for_tests, override_dependencies
+from tests import InputOptions, override_dependencies
 
 
 @pytest.mark.parametrize("option", [["-h"], ["--help"]])
-def test_down_help(
-    option: InputOptions, capsys: pytest.CaptureFixture[str]
-) -> None:
-    exit_code = cli_for_tests(CLI, ["down", *option])
-    output, error = capsys.readouterr()
+def test_down_help(option: InputOptions) -> None:
+    exit_code, output, error = run_cli(CLI, ["down", *option])
     assert exit_code == 0
     assert not error
     assert all(
@@ -41,14 +40,17 @@ def test_down_help(
     shutil.which("docker-compose") is None,
     reason="docker-compose is not available",
 )
-def test_down(capfd: pytest.CaptureFixture[str]) -> None:
+def test_down() -> None:
     @override_dependencies(down)
-    def execute(common_command: InputOptions) -> int:
-        run_command([*common_command, "run", "for-tests"])
-        return cli_for_tests(CLI, ["down"])
+    def execute(common_command: InputOptions) -> Tuple[int, str, str]:
+        assert not get_returncode([*common_command, "run", "for-tests"])
+        return run_cli(CLI, ["down"])  # type: ignore
 
-    exit_code = execute()  # pylint: disable=no-value-for-parameter
-    output, error = capfd.readouterr()
+    (
+        exit_code,
+        output,
+        error,
+    ) = execute()  # pylint: disable=no-value-for-parameter
     assert exit_code == 0
     assert not all(word in error for word in ["found"])
     assert all(
@@ -65,13 +67,12 @@ def test_down(capfd: pytest.CaptureFixture[str]) -> None:
     shutil.which("docker-compose") is None,
     reason="docker-compose is not available",
 )
-def test_down_without_targets(capfd: pytest.CaptureFixture[str]) -> None:
+def test_down_without_targets() -> None:
     @override_dependencies(down)
-    def execute() -> int:
-        return cli_for_tests(CLI, ["down"])
+    def execute() -> Tuple[int, str, str]:
+        return run_cli(CLI, ["down"])  # type: ignore
 
-    exit_code = execute()
-    output, error = capfd.readouterr()
+    exit_code, output, error = execute()
     assert exit_code == 0
     assert all(word in error for word in ["not", "found"])
     assert all(

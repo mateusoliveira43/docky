@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.1.1
+-----
+
+In this version:
+
+- Better help messages for commands.
+
 1.0.1
 -----
 

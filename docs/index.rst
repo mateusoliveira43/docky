@@ -10,14 +10,14 @@ Usage
 
 To use **Docky** in your project, in your project's root, run::
 
-   curl -fsSL https://raw.githubusercontent.com/mateusoliveira43/docky/main/instal_docky.py | python -
+   curl -fsSL https://raw.githubusercontent.com/mateusoliveira43/docky/main/install_docky.py | python -
 
 This will copy **Docky** (latest version) files to the ``scripts`` folder of your project.
 Then add the project's configuration in ``scripts/docky_cli/config.py`` file.
 
 To install (or update) Docky to a specific version, run::
 
-   curl -fsSL https://raw.githubusercontent.com/mateusoliveira43/docky/main/instal_docky.py | python - <version>
+   curl -fsSL https://raw.githubusercontent.com/mateusoliveira43/docky/main/install_docky.py | python - <version>
 
 You can check **Docky** help by running::
 

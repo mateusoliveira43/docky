@@ -15,11 +15,6 @@ def run_command_in_container(command: List[Optional[str]]) -> None:
     """
     Run service's Container default command or run a custom command in it.
 
-    If images are not yet built, they are build before running the command.
-
-    If no command is passed, runs the Container's default command. Otherwise,
-    runs the passed commands in the Container and exits.
-
     Parameters
     ----------
     command : List[Optional[str]]
@@ -41,6 +36,11 @@ def run_command_in_container(command: List[Optional[str]]) -> None:
 def run(command: List[Optional[str]]) -> None:
     """
     Run service's Container default command or run a custom command in it.
+
+    If images are not yet built, they are build before running the command.
+
+    If no command is passed, runs the Container's default command. Otherwise,
+    runs the passed commands in the Container and exits.
 
     Parameters
     ----------
